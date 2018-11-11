@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -51,6 +51,12 @@
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.8.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
@@ -85,6 +91,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -151,6 +159,54 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Doktor.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Historia_Pacjenta.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlinikaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KlinikaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlinikaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlinikaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KlinikaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Leczenie.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pacjent.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Recepta.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Skierowanie.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ubezpieczenie_Pacjenta.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wizyta.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zaopatrzenie.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zuzycie_Lekow.cs">
+      <DependentUpon>KlinikaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,10 +218,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\KlinikaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>KlinikaModel.Context.cs</LastGenOutput>
+      <DependentUpon>KlinikaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\KlinikaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KlinikaModel.edmx</DependentUpon>
+      <LastGenOutput>KlinikaModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\KlinikaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KlinikaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\KlinikaModel.edmx.diagram">
+      <DependentUpon>KlinikaModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -195,7 +268,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -209,6 +281,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
