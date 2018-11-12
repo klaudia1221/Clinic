@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Clinic.Models;
 
 namespace Clinic.Controllers
 {
@@ -7,19 +9,6 @@ namespace Clinic.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.Title = "System zarządzania kliniką";
-
-			return View();
-		}
-		public ActionResult Doktor()
-		{
-			ViewBag.Title = "Doktorzy";
-
-			return View();
-		}
-
-		public ActionResult Pacjent()
-		{
-			ViewBag.Title = "Pacjenci";
 
 			return View();
 		}

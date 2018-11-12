@@ -155,7 +155,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DoktorzyController.cs" />
     <Compile Include="Controllers\KlinikaController.cs" />
+    <Compile Include="Controllers\PacjenciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,9 +264,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Klinika\Doktor.cshtml" />
-    <Content Include="Views\Klinika\Pacjent.cshtml" />
+    <Content Include="Views\Doktorzy\Index.cshtml" />
+    <Content Include="Views\Pacjenci\Index.cshtml" />
     <Content Include="Views\Klinika\Index.cshtml" />
+    <Content Include="Views\Pacjenci\Edytuj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

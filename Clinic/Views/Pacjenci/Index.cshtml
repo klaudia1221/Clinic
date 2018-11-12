@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Clinic.Models.Pacjent>
+
+<h2>@ViewBag.Title</h2>
+
+<address>
+    <a href="Pacjent/Nowy1">Nowy (LINQ)</a><br />
+    <a href="Pacjent/Nowy2">Nowy (Procedura)</a>
+</address>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PacjentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrTelefonu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PacjentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrTelefonu)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edytuj", new { id = item.PacjentID }) |
+                @Html.ActionLink("Szczegóły", "Szczegoly", new { id = item.PacjentID }) |
+                @Html.ActionLink("Usuń", "Usun", new { id = item.PacjentID })
+            </td>
+        </tr>
+    }
+</table>
