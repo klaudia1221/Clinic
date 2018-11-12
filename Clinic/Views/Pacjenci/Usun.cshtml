@@ -1,0 +1,20 @@
+﻿@model Clinic.Models.Pacjent
+
+<h2>@ViewBag.Title - usuń</h2>
+
+<h3>Czy na pewno chcesz usunąć pacjenta
+    @Html.DisplayFor(model => model.Nazwisko)
+    @Html.DisplayFor(model => model.Imie)?
+</h3>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index")
+        </div>
+    }
+</div>
