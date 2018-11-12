@@ -270,6 +270,7 @@
     <Content Include="Views\Pacjenci\Edytuj.cshtml" />
     <Content Include="Views\Pacjenci\Szczegoly.cshtml" />
     <Content Include="Views\Pacjenci\Usun.cshtml" />
+    <Content Include="Views\Pacjenci\Nowy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

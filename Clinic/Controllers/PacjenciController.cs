@@ -18,7 +18,6 @@ namespace Clinic.Controllers
 			return View(patients.ToList());
 		}
 
-		// GET
 		public ActionResult Edytuj(int? id)
 		{
 			ViewBag.Title = Title;
@@ -99,6 +98,8 @@ namespace Clinic.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Usun(int id)
 		{
+			ViewBag.Title = Title;
+
 			try
 			{
 				var patient = db.Pacjent.Find(id);
@@ -113,6 +114,37 @@ namespace Clinic.Controllers
 			return RedirectToAction("Index");
 		}
 
+		public ActionResult Nowy()
+		{
+			ViewBag.Title = Title;
+
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Nowy(
+			[Bind(Include = "Nazwisko, Imie, StanCywilny, DataUrodzenia, Plec, Adres, NrTelefonu, Email")]
+			Pacjent patient)
+		{
+			ViewBag.Title = Title;
+
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					db.Pacjent.Add(patient);
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}
+			}
+			catch (RetryLimitExceededException)
+			{
+				ViewBag.ErrorMessage = "Nie udało się dodać pacjenta";
+			}
+
+			return View(patient);
+		}
 		private KlinikaEntities db = new KlinikaEntities();
 		private const string Title = "Pacjenci";
 	}
