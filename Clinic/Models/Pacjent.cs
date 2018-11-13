@@ -9,39 +9,50 @@
 
 namespace Clinic.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Pacjent
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pacjent()
-        {
-            this.Leczenie = new HashSet<Leczenie>();
-            this.Recepta = new HashSet<Recepta>();
-            this.Skierowanie = new HashSet<Skierowanie>();
-            this.Wizyta = new HashSet<Wizyta>();
-        }
-    
-        public int PacjentID { get; set; }
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
-        public string StanCywilny { get; set; }
-        public Nullable<System.DateTime> DataUrodzenia { get; set; }
-        public string Plec { get; set; }
-        public string Adres { get; set; }
-        public string NrTelefonu { get; set; }
-        public string Email { get; set; }
-    
-        public virtual Historia_Pacjenta Historia_Pacjenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Leczenie> Leczenie { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recepta> Recepta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Skierowanie> Skierowanie { get; set; }
-        public virtual Ubezpieczenie_Pacjenta Ubezpieczenie_Pacjenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wizyta> Wizyta { get; set; }
-    }
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Pacjent
+	{
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+		public Pacjent()
+		{
+			this.Leczenie = new HashSet<Leczenie>();
+			this.Recepta = new HashSet<Recepta>();
+			this.Skierowanie = new HashSet<Skierowanie>();
+			this.Wizyta = new HashSet<Wizyta>();
+		}
+
+		public int PacjentID { get; set; }
+		[Required]
+		public string Imie { get; set; }
+		[Required]
+		public string Nazwisko { get; set; }
+		public string StanCywilny { get; set; }
+		public Nullable<System.DateTime> DataUrodzenia { get; set; }
+		[Required(ErrorMessage = "Poprawne wartoœci: M, K")]
+		[RegularExpression(
+			"[MK]",
+			 ErrorMessage = "Poprawne wartoœci: M, K")]
+		public string Plec { get; set; }
+		public string Adres { get; set; }
+		[RegularExpression(
+			"[0-9]{9}",
+			ErrorMessage = "Podaj poprawny numer telefonu, sk³adaj¹cy siê z 9 cyfr")]
+		public string NrTelefonu { get; set; }
+		[EmailAddress(ErrorMessage = "Podaj poprawny adres email")]
+		public string Email { get; set; }
+
+		public virtual Historia_Pacjenta Historia_Pacjenta { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public virtual ICollection<Leczenie> Leczenie { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public virtual ICollection<Recepta> Recepta { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public virtual ICollection<Skierowanie> Skierowanie { get; set; }
+		public virtual Ubezpieczenie_Pacjenta Ubezpieczenie_Pacjenta { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public virtual ICollection<Wizyta> Wizyta { get; set; }
+	}
 }

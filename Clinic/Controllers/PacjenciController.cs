@@ -145,6 +145,22 @@ namespace Clinic.Controllers
 
 			return View(patient);
 		}
+
+		public ActionResult Historia(int? id)
+		{
+			ViewBag.Title = Title;
+
+			if (id == null)
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			var patientHistory = db.Historia_Pacjenta.Find(id);
+
+			if (patientHistory == null)
+				return HttpNotFound();
+
+			return View(patientHistory);
+		}
+
 		private KlinikaEntities db = new KlinikaEntities();
 		private const string Title = "Pacjenci";
 	}

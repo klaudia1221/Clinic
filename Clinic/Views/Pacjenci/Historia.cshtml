@@ -1,0 +1,30 @@
+﻿@model Clinic.Models.Historia_Pacjenta
+
+<h2>@ViewBag.Title - Historia</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Odra)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Odra);
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Swinka)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Swinka);
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rozyczka)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Rozyczka)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót", "Index")
+</p>

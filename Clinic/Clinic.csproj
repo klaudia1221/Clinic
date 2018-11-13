@@ -271,6 +271,7 @@
     <Content Include="Views\Pacjenci\Szczegoly.cshtml" />
     <Content Include="Views\Pacjenci\Usun.cshtml" />
     <Content Include="Views\Pacjenci\Nowy.cshtml" />
+    <Content Include="Views\Pacjenci\Historia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
