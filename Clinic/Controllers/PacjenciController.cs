@@ -1,5 +1,7 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -52,9 +54,11 @@ namespace Clinic.Controllers
 
 					return RedirectToAction("Index");
 				}
-				catch (RetryLimitExceededException) // DbEntityValidationException
+				catch (DbUpdateException ex)
 				{
-					ModelState.AddModelError("", "Error");
+					var errorMessage = $"Nie udało się edytować pacjenta - {ex.InnerException.InnerException.Message}";
+
+					ViewBag.ErrorMessage = errorMessage;
 				}
 			}
 
@@ -106,7 +110,7 @@ namespace Clinic.Controllers
 				db.Pacjent.Remove(patient);
 				db.SaveChanges();
 			}
-			catch (RetryLimitExceededException)
+			catch (Exception)
 			{
 				return RedirectToAction("Usun", new { id = id, saveChangesError = true });
 			}
@@ -138,9 +142,11 @@ namespace Clinic.Controllers
 					return RedirectToAction("Index");
 				}
 			}
-			catch (RetryLimitExceededException)
+			catch (DbUpdateException ex)
 			{
-				ViewBag.ErrorMessage = "Nie udało się dodać pacjenta";
+				var errorMessage = $"Nie udało się dodać pacjenta - {ex.InnerException.InnerException.Message}";
+
+				ViewBag.ErrorMessage = errorMessage;
 			}
 
 			return View(patient);

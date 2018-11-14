@@ -2,6 +2,8 @@
 
 <h2>@ViewBag.Title - nowy pacjent</h2>
 
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
