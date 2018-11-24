@@ -21,6 +21,7 @@ namespace Clinic.Models
         public string NrTelefonuPracodawcy { get; set; }
         public string StatusUbezpieczenia { get; set; }
         public Nullable<int> NrUbezpieczenia { get; set; }
+		public DateTime DataWaznosci { get; set; }
     
         public virtual Pacjent Pacjent { get; set; }
     }

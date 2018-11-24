@@ -15,9 +15,11 @@ namespace Clinic.Controllers
 			ViewBag.Title = Title;
 		}
 
-		public ActionResult Index()
+		public ActionResult Index(string message)
 		{
 			var patients = db.Pacjent;
+
+			ViewBag.ErrorMessage = message;
 
 			return View(patients.ToList());
 		}
@@ -142,15 +144,22 @@ namespace Clinic.Controllers
 
 		public ActionResult Historia(int? id)
 		{
-			if (id == null)
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			try
+			{
+				if (id == null)
+					return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-			var patientHistory = db.Historia_Pacjenta.Find(id);
+				var patientHistory = db.Historia_Pacjenta.Find(id);
 
-			if (patientHistory == null)
-				return HttpNotFound();
+				if (patientHistory == null)
+					throw new NullReferenceException($"Brak historii dla pacjenta o numerze: {id}");
 
-			return View(patientHistory);
+				return View(patientHistory);
+			}
+			catch (NullReferenceException e)
+			{
+				return RedirectToAction("Index", new { message = e.Message });
+			}
 		}
 
 		public ActionResult HistoriaEdytuj(int? id)
@@ -181,7 +190,7 @@ namespace Clinic.Controllers
 				{
 					db.SaveChanges();
 
-					return RedirectToAction("Historia", new { id = patientHistoryToUpdate.PacjentID});
+					return RedirectToAction("Historia", new { id = patientHistoryToUpdate.PacjentID });
 				}
 				catch (DbUpdateException ex)
 				{
@@ -192,6 +201,68 @@ namespace Clinic.Controllers
 			}
 
 			return View(patientHistoryToUpdate);
+		}
+
+		public ActionResult Ubezpieczenie(int? id)
+		{
+			try
+			{
+				if (id == null)
+					return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+				var insurance = db.Ubezpieczenie_Pacjenta.Find(id);
+
+				if (insurance == null)
+					throw new NullReferenceException($"Brak ubezpieczenia dla pacjenta o numerze: {id}");
+
+				return View(insurance);
+
+			}
+			catch (NullReferenceException e)
+			{
+				return RedirectToAction("Index", new {message = e.Message});
+			}
+		}
+
+		public ActionResult UbezpieczenieEdytuj(int? id)
+		{
+			if (id == null)
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			var insurance = db.Ubezpieczenie_Pacjenta.Find(id);
+
+			if (insurance == null)
+				return HttpNotFound();
+
+			return View(insurance);
+		}
+
+		[HttpPost, ActionName("UbezpieczenieEdytuj")]
+		public ActionResult UbezpieczenieEdytujPost(int? id)
+		{
+			if (id == null)
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			var insuranceToUpdate = db.Ubezpieczenie_Pacjenta.Find(id);
+
+			if (TryUpdateModel(insuranceToUpdate, "",
+				new[] { "Zawod", "AdresPracodawcy", "NrTelefonuPracodawcy", "StatusUbezpieczenia", "NrUbezpieczenia", "DataWaznosci" }))
+			{
+				try
+				{
+					db.SaveChanges();
+
+					return RedirectToAction("Ubezpieczenie", new { id = insuranceToUpdate.PacjentID });
+				}
+				catch (DbUpdateException ex)
+				{
+					var errorMessage = $"Nie udało się edytować ubezpieczenia pacjenta - {ex.InnerException.InnerException.Message}";
+
+					ViewBag.ErrorMessage = errorMessage;
+				}
+			}
+
+			return View(insuranceToUpdate);
 		}
 
 		private readonly KlinikaEntities db;

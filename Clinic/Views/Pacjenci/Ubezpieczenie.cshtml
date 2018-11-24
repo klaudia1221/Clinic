@@ -1,0 +1,69 @@
+﻿@model Clinic.Models.Ubezpieczenie_Pacjenta
+
+<h2>@ViewBag.Title - ubezpieczenie</h2>
+
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PacjentID)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.PacjentID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacjent.Nazwisko)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Pacjent.Nazwisko)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacjent.Imie)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Pacjent.Imie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Zawod)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Zawod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresPracodawcy)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.AdresPracodawcy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NrTelefonuPracodawcy)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.NrTelefonuPracodawcy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusUbezpieczenia)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.StatusUbezpieczenia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NrUbezpieczenia)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.NrUbezpieczenia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataWaznosci)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.DataWaznosci)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót", "Index")
+    @Html.ActionLink("Edytuj", "UbezpieczenieEdytuj", new { id = Model.PacjentID })
+</p>
