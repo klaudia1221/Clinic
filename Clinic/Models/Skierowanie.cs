@@ -16,7 +16,7 @@ namespace Clinic.Models
     {
         public int SkierowanieID { get; set; }
         public int PacjentID { get; set; }
-        public int DotkorID { get; set; }
+        public int DoktorID { get; set; }
         public string Informacja { get; set; }
     
         public virtual Doktor Doktor { get; set; }

@@ -158,6 +158,7 @@
     <Compile Include="Controllers\DoktorzyController.cs" />
     <Compile Include="Controllers\KlinikaController.cs" />
     <Compile Include="Controllers\PacjenciController.cs" />
+    <Compile Include="Controllers\WizytyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,6 +273,12 @@
     <Content Include="Views\Pacjenci\Usun.cshtml" />
     <Content Include="Views\Pacjenci\Nowy.cshtml" />
     <Content Include="Views\Pacjenci\Historia.cshtml" />
+    <Content Include="Views\Pacjenci\HistoriaEdytuj.cshtml" />
+    <Content Include="Views\Wizyty\Index.cshtml" />
+    <Content Include="Views\Wizyty\Nowa.cshtml" />
+    <Content Include="Views\Wizyty\Edytuj.cshtml" />
+    <Content Include="Views\Wizyty\Szczegoly.cshtml" />
+    <Content Include="Views\Wizyty\Usun.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

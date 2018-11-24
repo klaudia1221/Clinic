@@ -2,7 +2,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-@Html.ActionLink("Nowy (LINQ)", "Nowy")
+@Html.ActionLink("Nowa (LINQ)", "Nowy") <br />
+@Html.ActionLink("Nowa (Procedura)", "Nowy")
 
 <table class="table">
     <tr>
@@ -40,7 +41,9 @@
                 @Html.ActionLink("Edytuj", "Edytuj", new { id = item.PacjentID }) |
                 @Html.ActionLink("Szczegóły", "Szczegoly", new { id = item.PacjentID }) |
                 @Html.ActionLink("Usuń", "Usun", new { id = item.PacjentID }) |
-                @Html.ActionLink("Historia", "Historia", new { id = item.PacjentID })
+                @Html.ActionLink("Historia", "Historia", new { id = item.PacjentID}) |
+                @Html.ActionLink("Wizyty", "Index", "Wizyty", new { id = item.PacjentID, type = "Pacjent" }, null)
+
             </td>
         </tr>
     }

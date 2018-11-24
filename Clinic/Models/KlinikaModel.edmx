@@ -70,7 +70,7 @@
           </Key>
           <Property Name="SkierowanieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PacjentID" Type="int" Nullable="false" />
-          <Property Name="DotkorID" Type="int" Nullable="false" />
+          <Property Name="DoktorID" Type="int" Nullable="false" />
           <Property Name="Informacja" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -199,7 +199,7 @@
               <PropertyRef Name="DoktorID" />
             </Principal>
             <Dependent Role="Skierowanie">
-              <PropertyRef Name="DotkorID" />
+              <PropertyRef Name="DoktorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -421,7 +421,7 @@
           </Key>
           <Property Name="SkierowanieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PacjentID" Type="Int32" Nullable="false" />
-          <Property Name="DotkorID" Type="Int32" Nullable="false" />
+          <Property Name="DoktorID" Type="Int32" Nullable="false" />
           <Property Name="Informacja" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Doktor" Relationship="Self.FK__SKIEROWAN__Dotko__5AEE82B9" FromRole="Skierowanie" ToRole="Doktor" />
           <NavigationProperty Name="Pacjent" Relationship="Self.FK__SKIEROWAN__Pacje__59FA5E80" FromRole="Skierowanie" ToRole="Pacjent" />
@@ -523,7 +523,7 @@
               <PropertyRef Name="DoktorID" />
             </Principal>
             <Dependent Role="Skierowanie">
-              <PropertyRef Name="DotkorID" />
+              <PropertyRef Name="DoktorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -771,7 +771,7 @@
               <MappingFragment StoreEntitySet="Skierowanie">
                 <ScalarProperty Name="SkierowanieID" ColumnName="SkierowanieID" />
                 <ScalarProperty Name="PacjentID" ColumnName="PacjentID" />
-                <ScalarProperty Name="DotkorID" ColumnName="DotkorID" />
+                <ScalarProperty Name="DoktorID" ColumnName="DoktorID" />
                 <ScalarProperty Name="Informacja" ColumnName="Informacja" />
               </MappingFragment>
             </EntityTypeMapping>

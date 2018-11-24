@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Validation;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -11,19 +9,21 @@ namespace Clinic.Controllers
 {
 	public class PacjenciController : Controller
 	{
+		public PacjenciController(KlinikaEntities db)
+		{
+			this.db = db;
+			ViewBag.Title = Title;
+		}
+
 		public ActionResult Index()
 		{
 			var patients = db.Pacjent;
-
-			ViewBag.Title = Title;
 
 			return View(patients.ToList());
 		}
 
 		public ActionResult Edytuj(int? id)
 		{
-			ViewBag.Title = Title;
-
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -38,15 +38,13 @@ namespace Clinic.Controllers
 		[HttpPost, ActionName("Edytuj")]
 		public ActionResult EdytujPost(int? id)
 		{
-			ViewBag.Title = Title;
-
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var patientToUpdate = db.Pacjent.Find(id);
 
 			if (TryUpdateModel(patientToUpdate, "",
-				new [] { "Nazwisko", "Imie", "StanCywilny", "DataUrodzenia", "Plec", "Adres", "NrTelefonu", "Email"}))
+				new[] { "Nazwisko", "Imie", "StanCywilny", "DataUrodzenia", "Plec", "Adres", "NrTelefonu", "Email" }))
 			{
 				try
 				{
@@ -67,8 +65,6 @@ namespace Clinic.Controllers
 
 		public ActionResult Szczegoly(int? id)
 		{
-			ViewBag.Title = Title;
-
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -82,8 +78,6 @@ namespace Clinic.Controllers
 
 		public ActionResult Usun(int? id, bool? saveChangesError = false)
 		{
-			ViewBag.Title = Title;
-			
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -102,8 +96,6 @@ namespace Clinic.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Usun(int id)
 		{
-			ViewBag.Title = Title;
-
 			try
 			{
 				var patient = db.Pacjent.Find(id);
@@ -120,8 +112,6 @@ namespace Clinic.Controllers
 
 		public ActionResult Nowy()
 		{
-			ViewBag.Title = Title;
-
 			return View();
 		}
 
@@ -131,8 +121,6 @@ namespace Clinic.Controllers
 			[Bind(Include = "Nazwisko, Imie, StanCywilny, DataUrodzenia, Plec, Adres, NrTelefonu, Email")]
 			Pacjent patient)
 		{
-			ViewBag.Title = Title;
-
 			try
 			{
 				if (ModelState.IsValid)
@@ -154,8 +142,6 @@ namespace Clinic.Controllers
 
 		public ActionResult Historia(int? id)
 		{
-			ViewBag.Title = Title;
-
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -167,7 +153,48 @@ namespace Clinic.Controllers
 			return View(patientHistory);
 		}
 
-		private KlinikaEntities db = new KlinikaEntities();
+		public ActionResult HistoriaEdytuj(int? id)
+		{
+			if (id == null)
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			var patientHistory = db.Historia_Pacjenta.Find(id);
+
+			if (patientHistory == null)
+				return HttpNotFound();
+
+			return View(patientHistory);
+		}
+
+		[HttpPost, ActionName("HistoriaEdytuj")]
+		public ActionResult HistoriaEdytujPost(int? id)
+		{
+			if (id == null)
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			var patientHistoryToUpdate = db.Historia_Pacjenta.Find(id);
+
+			if (TryUpdateModel(patientHistoryToUpdate, "",
+				new[] { "Odra", "Swinka", "Rozyczka" }))
+			{
+				try
+				{
+					db.SaveChanges();
+
+					return RedirectToAction("Historia", new { id = patientHistoryToUpdate.PacjentID});
+				}
+				catch (DbUpdateException ex)
+				{
+					var errorMessage = $"Nie udało się edytować historii pacjenta - {ex.InnerException.InnerException.Message}";
+
+					ViewBag.ErrorMessage = errorMessage;
+				}
+			}
+
+			return View(patientHistoryToUpdate);
+		}
+
+		private readonly KlinikaEntities db;
 		private const string Title = "Pacjenci";
 	}
 }

@@ -1,0 +1,107 @@
+﻿@model Clinic.Models.Wizyta
+
+<h2>@ViewBag.Title - szczegóły</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WizytaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WizytaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PacjentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PacjentID)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DoktorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoktorID)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Godzina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godzina)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.TypWizyty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypWizyty)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Wzrost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wzrost)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Waga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waga)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Temperatura)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CisnienieKrwi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CisnienieKrwi)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Objawy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Objawy)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnoza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnoza)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót", "Index")
+</p>

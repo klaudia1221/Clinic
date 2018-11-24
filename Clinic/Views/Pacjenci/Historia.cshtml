@@ -6,16 +6,34 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.PacjentID)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.PacjentID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacjent.Nazwisko)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Pacjent.Nazwisko)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacjent.Imie)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Pacjent.Imie)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Odra)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Odra);
+            @Html.DisplayTextFor(model => model.Odra)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Swinka)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Swinka);
+            @Html.DisplayTextFor(model => model.Swinka)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Rozyczka)
@@ -27,4 +45,5 @@
 </div>
 <p>
     @Html.ActionLink("Powrót", "Index")
+    @Html.ActionLink("Edytuj", "HistoriaEdytuj", new { id = Model.PacjentID })
 </p>
