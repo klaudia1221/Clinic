@@ -4,9 +4,9 @@ using Clinic.Models;
 
 namespace Clinic.Controllers
 {
-	public class DoktorzyController : Controller
+	public class ZuzycieController : Controller
 	{
-		public DoktorzyController(KlinikaEntities db)
+		public ZuzycieController(KlinikaEntities db)
 		{
 			this.db = db;
 			ViewBag.Title = Title;
@@ -14,12 +14,12 @@ namespace Clinic.Controllers
 
 		public ActionResult Index()
 		{
-			var doctors = db.Doktor;
+			var zuzycie = db.Zuzycie_Lekow;
 
-			return View(doctors.ToList());
+			return View(zuzycie.ToList());
 		}
 
 		private readonly KlinikaEntities db;
-		private const string Title = "Doktorzy";
+		private const string Title = "Pacjenci";
 	}
 }

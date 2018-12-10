@@ -1,6 +1,54 @@
-﻿<h2>@ViewBag.Title</h2>
+﻿@model IEnumerable<Clinic.Models.Doktor>
 
-<address>
-    <a href="Pacjent/Nowy1">Nowy (LINQ)</a><br />
-    <a href="Pacjent/Nowy2">Nowy (Procedura)</a>
-</address>
+<h2>@ViewBag.Title</h2>
+
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
+@Html.ActionLink("Nowa (LINQ)", "Nowy") <br />
+@Html.ActionLink("Nowa (Procedura)", "Nowy")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DoktorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrTelefonu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specjalizacja)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoktorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.NrTelefonu)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specjalizacja)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edytuj", new { id = item.DoktorID }) |
+                @Html.ActionLink("Szczegóły", "Szczegoly", new { id = item.DoktorID }) |
+                @Html.ActionLink("Usuń", "Usun", new { id = item.DoktorID })
+            </td>
+        </tr>
+    }
+</table>

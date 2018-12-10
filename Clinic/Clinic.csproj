@@ -159,57 +159,22 @@
     <Compile Include="Controllers\KlinikaController.cs" />
     <Compile Include="Controllers\PacjenciController.cs" />
     <Compile Include="Controllers\WizytyController.cs" />
+    <Compile Include="Controllers\ZuzycieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Doktor.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Historia_Pacjenta.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KlinikaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KlinikaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KlinikaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KlinikaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KlinikaModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Leczenie.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pacjent.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Recepta.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Skierowanie.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Ubezpieczenie_Pacjenta.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Wizyta.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zaopatrzenie.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zuzycie_Lekow.cs">
-      <DependentUpon>KlinikaModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Doktor.cs" />
+    <Compile Include="Models\Historia_Pacjenta.cs" />
+    <Compile Include="Models\KlinikaEntities.cs" />
+    <Compile Include="Models\Leczenie.cs" />
+    <Compile Include="Models\Pacjent.cs" />
+    <Compile Include="Models\Recepta.cs" />
+    <Compile Include="Models\Skierowanie.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="Models\Ubezpieczenie_Pacjenta.cs" />
+    <Compile Include="Models\Wizyta.cs" />
+    <Compile Include="Models\Zaopatrzenie.cs" />
+    <Compile Include="Models\Zuzycie_Lekow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,27 +186,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\KlinikaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KlinikaModel.Context.cs</LastGenOutput>
-      <DependentUpon>KlinikaModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\KlinikaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KlinikaModel.edmx</DependentUpon>
-      <LastGenOutput>KlinikaModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\KlinikaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KlinikaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\KlinikaModel.edmx.diagram">
-      <DependentUpon>KlinikaModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -254,7 +202,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -281,6 +231,11 @@
     <Content Include="Views\Wizyty\Usun.cshtml" />
     <Content Include="Views\Pacjenci\Ubezpieczenie.cshtml" />
     <Content Include="Views\Pacjenci\UbezpieczenieEdytuj.cshtml" />
+    <Content Include="Views\Doktorzy\Edytuj.cshtml" />
+    <Content Include="Views\Doktorzy\Nowy.cshtml" />
+    <Content Include="Views\Doktorzy\Szczegoly.cshtml" />
+    <Content Include="Views\Doktorzy\Usun.cshtml" />
+    <Content Include="Views\Zuzycie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

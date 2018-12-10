@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Clinic.Models;
 
@@ -37,22 +38,57 @@ namespace Clinic.Controllers
 			return View(patient);
 		}
 
-		[HttpPost, ActionName("Edytuj")]
-		public ActionResult EdytujPost(int? id)
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Edytuj(int? id, byte[] rowVersion)
 		{
 			if (id == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-			var patientToUpdate = db.Pacjent.Find(id);
+			var patientToUpdate = await db.Pacjent.FindAsync(id);
 
 			if (TryUpdateModel(patientToUpdate, "",
-				new[] { "Nazwisko", "Imie", "StanCywilny", "DataUrodzenia", "Plec", "Adres", "NrTelefonu", "Email" }))
+				new[] { "Nazwisko", "Imie", "StanCywilny", "DataUrodzenia", "Plec", "Adres", "NrTelefonu", "Email", "RowVersion" }))
 			{
 				try
 				{
-					db.SaveChanges();
+					db.Entry(patientToUpdate).Property("RowVersion").OriginalValue = rowVersion;
+
+
+					await db.SaveChangesAsync();
 
 					return RedirectToAction("Index");
+				}
+				catch (DbUpdateConcurrencyException ex)
+				{
+					var errorMessage = "Dane, w międzyczasie, zostały zmienione przez innego użytkownika";
+
+					ViewBag.ErrorMessage = errorMessage;
+
+					var entry = ex.Entries.Single();
+					var clientValues = (Pacjent)entry.Entity;
+					var databaseEntry = entry.GetDatabaseValues();
+					if (databaseEntry == null)
+					{
+						ModelState.AddModelError(string.Empty,
+							"Pacjent został usunięty przez innego użytkownika");
+					}
+					else
+					{
+						var databaseValues = (Pacjent)databaseEntry.ToObject();
+
+						if (databaseValues.Imie != clientValues.Imie)
+						{
+							ModelState.AddModelError("Imie", "Aktualna wartość: " + databaseValues.Imie);
+						}
+						if (databaseValues.Nazwisko != clientValues.Nazwisko)
+						{
+							ModelState.AddModelError("Nazwisko", "Aktualna wartość: "
+							 + databaseValues.Nazwisko);
+						}
+
+						patientToUpdate.RowVersion = databaseValues.RowVersion;
+					}
 				}
 				catch (DbUpdateException ex)
 				{
@@ -220,7 +256,7 @@ namespace Clinic.Controllers
 			}
 			catch (NullReferenceException e)
 			{
-				return RedirectToAction("Index", new {message = e.Message});
+				return RedirectToAction("Index", new { message = e.Message });
 			}
 		}
 
