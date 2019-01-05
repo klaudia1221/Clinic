@@ -31,7 +31,7 @@ namespace Clinic.Models
 		[Column(TypeName = "date")]
         public DateTime? DataUrodzenia { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string Adres { get; set; }
 
         [StringLength(9)]

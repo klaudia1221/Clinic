@@ -1,4 +1,4 @@
-﻿@model Clinic.Models.Pacjent
+﻿@model Clinic.Models.Doktor
 
 <h2>@ViewBag.Title - szczegóły</h2>
 
@@ -21,13 +21,7 @@
             @Html.DisplayFor(model => model.Imie)
         </dd>
         
-        <dt>
-            @Html.DisplayNameFor(model => model.StanCywilny)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StanCywilny)
-        </dd>
+  
         
         <dt>
             @Html.DisplayNameFor(model => model.DataUrodzenia)
@@ -36,14 +30,7 @@
         <dd>
             @Html.DisplayFor(model => model.DataUrodzenia)
         </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Plec)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Plec)
-        </dd>
         
         <dt>
             @Html.DisplayNameFor(model => model.Adres)
@@ -67,6 +54,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Email)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Specjalizacja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specjalizacja)
         </dd>
     </dl>
 </div>
