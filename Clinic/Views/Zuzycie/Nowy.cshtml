@@ -11,11 +11,11 @@
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+    
     <div class="form-group">
         @Html.LabelFor(model => model.WizytaID, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.WizytaID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DisplayFor(model => model.WizytaID, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.WizytaID, "", new { @class = "text-danger" })
         </div>
     </div>

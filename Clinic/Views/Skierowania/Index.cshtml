@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Clinic.Models.Skierowanie>
+
+<h2>@ViewBag.Title</h2>
+
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
+@Html.ActionLink("Nowa (LINQ)", "Nowy") <br />
+@Html.ActionLink("Nowa (Procedura)", "Nowy")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SkierowanieID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PacjentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoktorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Informacja)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkierowanieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PacjentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoktorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Informacja)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edytuj", new { id = item.SkierowanieID }) |
+                @Html.ActionLink("Usuń", "Usun", new { id = item.SkierowanieID })
+            </td>
+        </tr>
+    }
+</table>

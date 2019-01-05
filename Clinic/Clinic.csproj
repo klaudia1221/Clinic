@@ -160,6 +160,7 @@
     <Compile Include="Controllers\KlinikaController.cs" />
     <Compile Include="Controllers\PacjenciController.cs" />
     <Compile Include="Controllers\ReceptaController.cs" />
+    <Compile Include="Controllers\SkierowaniaController.cs" />
     <Compile Include="Controllers\WizytyController.cs" />
     <Compile Include="Controllers\ZaopatrzenieController.cs" />
     <Compile Include="Controllers\ZuzycieController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Models\Historia_Pacjenta.cs" />
     <Compile Include="Models\KlinikaEntities.cs" />
     <Compile Include="Models\Leczenie.cs" />
+    <Compile Include="Models\NewMedUsageModel.cs" />
     <Compile Include="Models\Pacjent.cs" />
     <Compile Include="Models\Recepta.cs" />
     <Compile Include="Models\Skierowanie.cs" />
@@ -250,6 +252,9 @@
     <Content Include="Views\Recepta\Nowy.cshtml" />
     <Content Include="Views\Recepta\Szczegoly.cshtml" />
     <Content Include="Views\Recepta\Usun.cshtml" />
+    <Content Include="Views\Zuzycie\Usun.cshtml" />
+    <Content Include="Views\Skierowania\Index.cshtml" />
+    <Content Include="Views\Skierowania\Nowy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

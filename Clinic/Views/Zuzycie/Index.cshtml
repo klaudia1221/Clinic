@@ -1,30 +1,24 @@
-﻿@model IEnumerable<Clinic.Models.Zuzycie_Lekow>
+﻿@model Clinic.Models.NewMedUsageModel
 
 <h2>@ViewBag.Title</h2>
 
-@Html.ActionLink("Nowy (LINQ)", "Nowy") <br />
+@Html.ActionLink("Nowy (LINQ)", "Nowy", new {id = Model.Id}) <br />
 @Html.ActionLink("Nowy (Procedura)", "Nowa")
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WizytaID)
+            @Html.DisplayNameFor(model => model.MedUsage.FirstOrDefault().ZaopatrzenieID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ZaopatrzenieID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ilosc)
+            @Html.DisplayNameFor(model => model.MedUsage.FirstOrDefault().Ilosc)
         </th>
 
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.MedUsage)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WizytaID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZaopatrzenieID)
             </td>
@@ -32,8 +26,6 @@
                 @Html.DisplayFor(modelItem => item.Ilosc)
             </td>
             <td>
-                @Html.ActionLink("Edytuj", "Edytuj", new { id = item.WizytaID }) |
-                @Html.ActionLink("Szczegóły", "Szczegoly", new { id = item.WizytaID }) |
                 @Html.ActionLink("Usuń", "Usun", new { id = item.WizytaID })
             </td>
         </tr>

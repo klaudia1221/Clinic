@@ -1,0 +1,24 @@
+﻿@model Clinic.Models.Zuzycie_Lekow
+
+<h2>@ViewBag.Title - usuń</h2>
+
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
+<h3>
+    Czy na pewno chcesz usunąć zużycie
+    @Html.DisplayFor(model => model.WizytaID)
+    @Html.DisplayFor(model => model.ZaopatrzenieID)
+    @Html.DisplayFor(model => model.Ilosc)?
+</h3>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index", new { id = Model.WizytaID, type = "Wizyta" })
+        </div>
+    }
+</div>

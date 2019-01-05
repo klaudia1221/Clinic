@@ -1,6 +1,6 @@
 ﻿@model Clinic.Models.Doktor
 
-<h2>@ViewBag.Title - tryb edycji</h2>
+<h2>@ViewBag.Title - nowy doktor</h2>
 
 <p style="color:red">@ViewBag.ErrorMessage</p>
 
@@ -20,7 +20,7 @@
                 @Html.ValidationMessageFor(model => model.Nazwisko, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Imie, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -28,9 +28,7 @@
                 @Html.ValidationMessageFor(model => model.Imie, "", new { @class = "text-danger" })
             </div>
         </div>
-        
-  
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.DataUrodzenia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,9 +36,7 @@
                 @Html.ValidationMessageFor(model => model.DataUrodzenia, "", new { @class = "text-danger" })
             </div>
         </div>
-        
-    
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Adres, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -48,7 +44,7 @@
                 @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.NrTelefonu, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -56,7 +52,7 @@
                 @Html.ValidationMessageFor(model => model.NrTelefonu, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -64,7 +60,7 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Specjalizacja, new { @class = "control-label col-md-2" })
             <div class="col-md-10">

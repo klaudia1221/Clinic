@@ -47,6 +47,7 @@
                 @Html.ActionLink("Edytuj", "Edytuj", new { id = item.WizytaID }) |
                 @Html.ActionLink("Szczegóły", "Szczegoly", new { id = item.WizytaID }) |
                 @Html.ActionLink("Usuń", "Usun", new { id = item.WizytaID })
+                @Html.ActionLink("Zużycie leków", "Index", "Zuzycie", new { id = item.WizytaID, type = "Wizyta" }, null)
             </td>
         </tr>
     }
