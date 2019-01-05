@@ -1,0 +1,25 @@
+﻿@model Clinic.Models.Recepta
+
+<h2>@ViewBag.Title - usuń</h2>
+
+<p style="color:red">@ViewBag.ErrorMessage</p>
+
+<h3>
+    Czy na pewno chcesz usunąć receptę o id 
+    @Html.DisplayFor(model => model.ReceptaID)
+     na lek 
+    @Html.DisplayFor(model => model.Lek)?
+   
+</h3>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index")
+        </div>
+    }
+</div>

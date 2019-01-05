@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -158,7 +159,9 @@
     <Compile Include="Controllers\DoktorzyController.cs" />
     <Compile Include="Controllers\KlinikaController.cs" />
     <Compile Include="Controllers\PacjenciController.cs" />
+    <Compile Include="Controllers\ReceptaController.cs" />
     <Compile Include="Controllers\WizytyController.cs" />
+    <Compile Include="Controllers\ZaopatrzenieController.cs" />
     <Compile Include="Controllers\ZuzycieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +240,16 @@
     <Content Include="Views\Doktorzy\Usun.cshtml" />
     <Content Include="Views\Zuzycie\Index.cshtml" />
     <Content Include="Views\Zuzycie\Nowy.cshtml" />
+    <Content Include="Views\Zaopatrzenie\Nowy.cshtml" />
+    <Content Include="Views\Zaopatrzenie\Index.cshtml" />
+    <Content Include="Views\Zaopatrzenie\Edytuj.cshtml" />
+    <Content Include="Views\Zaopatrzenie\Szczegoly.cshtml" />
+    <Content Include="Views\Zaopatrzenie\Usun.cshtml" />
+    <Content Include="Views\Recepta\Index.cshtml" />
+    <Content Include="Views\Recepta\Edytuj.cshtml" />
+    <Content Include="Views\Recepta\Nowy.cshtml" />
+    <Content Include="Views\Recepta\Szczegoly.cshtml" />
+    <Content Include="Views\Recepta\Usun.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
