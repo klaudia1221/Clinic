@@ -83,8 +83,11 @@ namespace Clinic.Controllers
 						}
 						if (databaseValues.Nazwisko != clientValues.Nazwisko)
 						{
-							ModelState.AddModelError("Nazwisko", "Aktualna wartość: "
-							 + databaseValues.Nazwisko);
+							ModelState.AddModelError("Nazwisko", "Aktualna wartość: " + databaseValues.Nazwisko);
+						}
+						if (databaseValues.Adres != clientValues.Adres)
+						{
+							ModelState.AddModelError("Adres", "Aktualna wartość: " + databaseValues.Adres);
 						}
 
 						patientToUpdate.RowVersion = databaseValues.RowVersion;
